@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#ViewFile").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { shId: $("#shipmentID").val() },
+				url: "http://localhost:3000/tfbc/view", 
+				success: function(result){
+                console.log(result); 
+                var outputHtml = '<a href='+result.data.Hash+' target=_blank>'+$("#shipmentID").val()+'</a>';
+                console.log(outputHtml);
+				$("#ViewDoc").html(outputHtml);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+   
+    <table>
+    <tr>
+    <td>Shipment ID:</td>
+    <td><input id="shipmentID" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="ViewFile">View Document</button></td>
+  </tr>
+</table>
+  <div id="ViewDoc">
+
+  </div>
+</body>
+</html>

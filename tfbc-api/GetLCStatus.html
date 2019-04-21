@@ -1,0 +1,81 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#GetLCRecords").hide();
+  $("#GetLC").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { lcId: $("#lcId").val() },
+				url: "http://localhost:3000/tfbc/getLC", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.data); 
+				$("#GetLCRecords").show();
+				$("#ExBank").html(result.data.ExBank);
+				$("#amount").html(result.data.amount);
+				$("#buyer").html(result.data.buyer);
+				$("#expiryDate").html(result.data.expiryDate);
+				$("#imbank").html(result.data.imbank);
+				$("#lcId1").html(result.data.lcId);
+				$("#seller").html(result.data.seller);
+				$("#status").html(result.data.status);				
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+
+<table>
+  <tr>
+    <td>Letter of Credit ID</td>
+    <td><input id="lcId" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="GetLC">Get LC Details</button></td>
+  </tr>
+</table>
+
+  
+  <br>
+<div id="GetLCRecords">
+  <table border="1">
+  <tr>
+    <th>Letter of Credit ID</th>
+    <th>Buyer</th>
+    <th>Importer Bank</th>
+    <th>Seller</th>
+    <th>Exporter bank</th>
+    <th>Expiry Date</th>
+    <th>Amount</th>
+    <th>Status</th>	
+  </tr>
+  <tr>
+    <td><div id="lcId1"></div></td>
+    <td><div id="buyer"></div></td>
+    <td><div id="imbank"></div></td>
+    <td><div id="seller"></div></td>	
+    <td><div id="ExBank"></div></td>	
+    <td><div id="expiryDate"></div></td>
+    <td><div id="amount"></div></td>
+    <td><div id="status"></div></td>		
+  </tr>
+</table>
+  </div>
+  
+
+</body>
+</html>

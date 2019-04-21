@@ -1,0 +1,778 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Swagger HLF Trade Finance.",
+        "version": "1.0.0",
+        "title": "Swagger HLF Trade Finance",
+        
+        "contact": {
+            "email": ""
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:3000",
+    "basePath": "/tfbc",
+    
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/requestLC": {
+            "post": {
+                
+                "summary": "Request LC",
+                "description": "Request LC",
+                "operationId": "requestLC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "LC object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LC"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/addOrg": {
+            "post": {
+                
+                "summary": "Add organization  details",
+                "description": "Add Organizatino details",
+                "operationId": "addOrg",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Organization Details",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ORG"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/ORG"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/issueLC": {
+            "post": {
+                
+                "summary": "Issue LC",
+                "description": "Issue LC",
+                "operationId": "issueLC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "LC ID object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LCID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/acceptLC": {
+            "post": {
+                
+                "summary": "Accept LC",
+                "description": "Accept LC",
+                "operationId": "acceptLC",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "LC ID object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LCID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/getLC": {
+            "post": {
+                
+                "summary": "Get LC",
+                "description": "Get LC",
+                "operationId": "getLC",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "LC object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LCID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/LC"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/getLCHistory": {
+            "post": {
+                
+                "summary": "Get LC History",
+                "description": "Get LC History",
+                "operationId": "getLCHistory",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "LC object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/LCID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/LC"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/exporter": {
+            "post": {
+                
+                "summary": "exporter",
+                "description": "Enter the details of exporter",
+                "operationId": "exporter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Exporter object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SH"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/getSH": {
+            "post": {
+                
+                "summary": "Get shipment details",
+                "description": "Get shipment details",
+                "operationId": "getSH",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Shipment object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/SHR"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/customesApprove": {
+            "post": {
+                
+                "summary": "Approve the Shipment",
+                "description": "Approves the shipment ",
+                "operationId": "customesApprove",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Customes Approve object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/customesReject": {
+            "post": {
+                
+                "summary": "Reject the Shipment",
+                "description": "Reject the shipment ",
+                "operationId": "customesReject",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Customes Reject object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/importer": {
+            "post": {
+                
+                "summary": "Received the goods",
+                "description": "Received the goods ",
+                "operationId": "importer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Received the goods",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/getStatus": {
+            "post": {
+                
+                "summary": "Get status of shipment",
+                "description": "Get status",
+                "operationId": "getStatus",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "get status object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/ST"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/getOrg": {
+            "post": {
+                
+                "summary": "Get Org",
+                "description": "Get Org",
+                "operationId": "getOrg",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Org object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ORGID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/ORG"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+        },
+        "/customesReject": {
+            "post": {
+                
+                "summary": "Reject the Shipment",
+                "description": "Reject the shipment ",
+                "operationId": "customesReject",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Customes Reject object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/upload": {
+            "post": {
+                
+                "summary": "Received the goods",
+                "description": "Received the goods ",
+                "operationId": "upload",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    
+                    {   "in": "formData",
+                        "name": "ufile",
+                        "type": "file",
+                        "description": "Upload the file ",
+                        "required": true
+
+                    },
+                    {
+                        "in": "formData",
+                        "name": "ShipmentID",
+                        "description": "Received the goods",
+                        "required":true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "HashValue",
+                        "description": "Received the goods",
+                        "required":true,
+                        "type": "string"
+                        
+
+                    }
+                ],
+                "responses": {
+                    "405": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/view": {
+            "post": {
+                
+                "summary": "View the uploaded file ",
+                "description": "View the Shipment documents ",
+                "operationId": "view",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Org object",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/SHID"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "object",
+                            "items": {
+                                "$ref": "#/definitions/VIEW"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid status value"
+                    }
+                }
+            }
+                
+        }
+    },
+    "definitions": {
+        "LC": {
+            "type": "object",
+            "properties": {
+                "lcId": {
+                    "type": "string",
+                    "description": "LC ID"
+                },
+                "buyer": {
+                    "type": "string",
+                    "description": "Buyer ID"
+                },
+                "imbank": {
+                    "type": "string",
+                    "description": "Importer Bank ID"
+                },
+                "seller": {
+                    "type": "string",
+                    "description": "Seller ID"
+                },
+                "exbank": {
+                    "type": "string",
+                    "description": "exporter Bank ID"
+                },
+                "expiryDate": {
+                    "type": "string",
+                    "description": "LC Expiry date"
+                },
+                "amount": {
+                    "type": "string",
+                    "description": "LC Amount"
+                }
+            }
+        },
+        "LCID": {
+            "type": "object",
+            "properties": {
+                "lcId": {
+                    "type": "string",
+                    "description": "LC ID"
+                }
+            }
+        },
+        "ORG": {
+            "type": "object",
+            "properties": {
+                "bankId": {
+                    "type": "string",
+                    "description": "Bank ID"
+                },
+                "token" : {
+                    "type" : "string",
+                    "description" : "Bank Balance Token"
+                }
+            }
+        },
+        "SHID": {
+            "type": "object",
+            "properties": {
+                "shId": {
+                    "type": "string",
+                    "description": "Shipment ID"
+                }
+            }
+        },
+        "ORGID": {
+            "type": "object",
+            "properties": {
+                "orgId": {
+                    "type": "string",
+                    "description": "Org ID"
+                }
+            }
+        },
+        "UPLOAD": {
+            "type": "form-data",
+            "properties": {
+                "orgId": {
+                    "type": "file",
+                    "description": "Org ID"
+                },
+                "shId":{
+                    "type" : "string",
+                    "description" : "shipment ID"
+                }
+            }
+        },
+        "VIEW": {
+            "type": "object",
+            "properties": {
+                "orgId": {
+                    "type": "string",
+                    "description": "Shipment ID"
+                },
+                "filelink": {
+                    "type": "string",
+                    "description": "link to view the file"
+                }
+
+            }
+        },       
+        "ST": {
+            "type": "object",
+            "properties": {
+                "exporter": {
+                    "type": "string",
+                    "description": "exporter status"
+                },
+                "customes": {
+                    "type": "string",
+                    "description": "customes status"
+                },
+                "importer": {
+                    "type": "string",
+                    "description": "importer status"
+                },
+                "payment": {
+                    "type": "string",
+                    "description": "payment status"
+                }                
+            }
+        },
+        "SH": {
+            "type": "object",
+            "properties": {
+                "shipmentID": {
+                    "type": "string",
+                    "description": "Shipment ID"
+                },
+                "lcID": {
+                    "type": "string",
+                    "description": "Letter of credit"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the goods"
+                },
+                "shipmentValue": {
+                    "type": "string",
+                    "description": "Value of the shipment Goods"
+                },
+                "shipmentCo": {
+                    "type": "string",
+                    "description": "Shipment Company"
+                },
+                "poland": {
+                    "type": "string",
+                    "description": "Port of landing"
+                },
+                "poentry": {
+                    "type": "string",
+                    "description": "Port of entry"
+                },
+                "shipmentStatus" : {
+                    "type": "string",
+                    "description" : "status of the shipment"
+                }
+            }
+        },
+        "SHR": {
+            "type": "object",
+            "properties": {
+                "shipmentID": {
+                    "type": "string",
+                    "description": "Shipment ID"
+                },
+                "lcID": {
+                    "type": "string",
+                    "description": "Letter of credit"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the goods"
+                },
+                "shipmentValue": {
+                    "type": "string",
+                    "description": "Value of the shipment Goods"
+                },
+                "exbank":{
+                    "type" : "string",
+                    "desription" : "exporter bank"
+                },
+                "imbank":{
+                    "type" :"string",
+                    "description": "importer bank"
+                },
+                "shipmentCo": {
+                    "type": "string",
+                    "description": "Shipment Company"
+                },
+                "poland": {
+                    "type": "string",
+                    "description": "Port of landing"
+                },
+                "poentry": {
+                    "type": "string",
+                    "description": "Port of entry"
+                },
+                "shipmentStatus" : {
+                    "type": "string",
+                    "description" : "status of the shipment"
+                },
+                "customesCharges" : {
+                    "type" : "string",
+                    "description" : "customes charges"
+                }
+            }
+        }        
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}

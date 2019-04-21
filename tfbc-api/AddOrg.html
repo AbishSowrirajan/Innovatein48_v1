@@ -1,0 +1,42 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#AddOrg").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { bankId: $("#bankId").val(), token: $("#token").val() },
+				url: "http://localhost:3000/tfbc/addOrg", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.message); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+  Bank Id:<br>
+  <input id="bankId" type="text">
+  <br>
+  Bank Token:<br>
+  <input id="token" type="text"><br>
+  <button id="AddOrg">Add Organization</button>
+  <div id="div1"></div>
+  
+  
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#getPymt").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { shId: $("#pymtID").val() },
+				url: "http://localhost:3000/tfbc/getStatus", 
+				success: function(result){
+				console.log(result); 
+				var outputHtml = '<table border="1">  <tr> <th>Customs Status</th>   <th>Export Status</th>    <th>Import Status</th>    <th>Payment Status</th>   </tr>';			
+				outputHtml = outputHtml + '<tr><td>'+result.data.Customes+ '</td><td>'+result.data.Exporter+'</td><td>'+result.data.Importer+ '</td><td>'+result.data.Payment + '</td></tr>';
+				outputHtml=outputHtml+'</table>';
+				$("#GetPayment").html(outputHtml);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+   
+    <table>
+    <tr>
+    <td>ShipmentID:</td>
+    <td><input id="pymtID" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="getPymt">Submit</button></td>
+  </tr>
+  </tr></tr>
+</table>
+  <div id="GetPayment"></div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#AddOrg").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { lcId: $("#lcId").val(), 
+				buyer: $("#buyer").val(),
+				imbank: $("#imbank").val(),
+				seller: $("#seller").val(),
+				exbank: $("#exbank").val(),
+				expiryDate: $("#expiryDate").val(),
+				amount: $("#amount").val()
+				},
+				url: "http://localhost:3000/tfbc/requestLC", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.message); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+   
+    <table>
+  <tr>
+    <td>Letter of Credit ID:</td>
+    <td><input id="lcId" type="text"></td>
+  </tr>
+    <tr>
+    <td>Buyer:</td>
+    <td><input id="buyer" type="text"></td>
+  </tr>
+    <tr>
+    <td>Importer Bank:</td>
+    <td><input id="imbank" type="text"></td>
+  </tr>
+    <tr>
+    <td>Seller:</td>
+    <td><input id="seller" type="text"></td>
+  </tr>
+    <tr>
+    <td>Exporter bank:</td>
+    <td><input id="exbank" type="text"></td>
+  </tr>
+    <tr>
+    <td>Expiry Date:</td>
+    <td><input id="expiryDate" type="text"></td>
+  </tr>
+    <tr>
+    <td>Amount:</td>
+    <td><input id="amount" type="text"></td>
+  </tr>
+     <tr>
+    <td></td>
+    <td><button id="AddOrg">Request Letter of Credit</button></td>
+  </tr>
+</table>
+  <div id="div1"></div>
+</body>
+</html>

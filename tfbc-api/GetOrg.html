@@ -1,0 +1,54 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#GetOrgRec").hide();
+  $("#GetOrg").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { orgId: $("#orgId").val() },
+				url: "http://localhost:3000/tfbc/getOrg", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.data); 
+				$("#GetOrgRec").show();
+				$("#bankId").html(result.data.BankID);
+				$("#token").html(result.data.Token);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+  Organization Id:<br>
+  <input id="orgId" type="text">
+  <br>
+  <button id="GetOrg">Get Organization</button>
+  <br>
+  <div id="GetOrgRec">
+  <table border="1">
+  <tr>
+    <th>Bank Id</th>
+    <th>Bank Token</th>
+  </tr>
+  <tr>
+    <td><div id="bankId"></div></td>
+    <td><div id="token"></div></td>
+  </tr>
+</table>
+  </div>
+  
+
+</body>
+</html>

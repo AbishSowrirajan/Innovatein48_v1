@@ -1,0 +1,70 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#Submit").click(function(){
+  if($("#CusomDecision").val()=="Approve"){
+	 $.ajax({
+				method: "POST",
+				data: { shId: $("#shipmentID").val() },
+				url: "http://localhost:3000/tfbc/customesApprove", 
+				success: function(result){
+				console.log(result); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+	}
+  if($("#CusomDecision").val()=="Reject"){
+	 $.ajax({
+				method: "POST",
+				data: { shId: $("#shipmentID").val() },
+				url: "http://localhost:3000/tfbc/customesReject", 
+				success: function(result){
+				console.log(result); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+	}
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+    <td>Shipment ID:</td>
+    <td><input id="shipmentID" type="text"></td>
+  </tr>
+      <tr>
+    <td>Decision:</td>
+    <td>
+	<select id="CusomDecision">
+		<option value="Approve">Approve</option>
+		<option value="Reject">Reject</option>
+	</select>
+	</td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="Submit">Submit</button></td>
+  </tr>
+</table>
+
+  <br>
+  <div id="div1"></div>
+
+</body>
+</html>

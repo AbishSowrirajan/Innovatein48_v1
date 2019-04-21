@@ -1,0 +1,31 @@
+<html>
+<head>
+
+</head>
+<body>
+<table>
+      <tr>
+    <td>Shipment ID:</td>
+    <td><input id="ShipmentID" type="text"></td>
+  </tr>
+  </table>
+<form action="http://localhost:3000/tfbc/upload" method="post" enctype="multipart/form-data">
+      <table>
+    <tr>
+	<td>Browse Document :</td>
+    <td><input type="file" name="ufile" value="fileupload" id="ufile"></td>
+  </tr>
+      <tr>
+    <td>Shipment ID:</td>
+    <td><input id="shId" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="submit">submit</button></td>
+  </tr>
+</table>
+  
+  <div id="div1"></div>
+</form>
+</body>
+</html>

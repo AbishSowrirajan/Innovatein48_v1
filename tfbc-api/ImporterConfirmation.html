@@ -1,0 +1,43 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#ImporterConfirm").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { shId: $("#shipmentID").val() },
+				url: "http://localhost:3000/tfbc/importer", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.data); 
+				$("#GetImpConfirm").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+   
+    <table>
+    <tr>
+    <td>Shipment ID:</td>
+    <td><input id="shipmentID" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="ImporterConfirm">Confirm Goods Received</button></td>
+  </tr>
+</table>
+  <div id="GetImpConfirm"></div>
+</body>
+</html>

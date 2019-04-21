@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head lang="en">
+<script>
+$(document).ready(function (e) {
+ $("#form").on('submit',(function(e) {
+  e.preventDefault();
+  alert("Hello");
+  $.ajax({
+   url: http://localhost:3000/tfbc/upload,
+   type: "POST",
+   data:  formdata,
+   success: function(res)
+      {
+alert("Success");
+      },
+     error: function(e) 
+      {
+alert("Fail");
+      }          
+    });
+ }));
+});
+</script>
+<meta charset="utf-8">
+<title>Ajax File Upload with jQuery and PHP</title>
+
+</head>
+<body>
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<h1><a href="#" target="_blank"><img src="logo.png" width="80px"/>Ajax File Uploading with Database MySql</a></h1>
+<hr> 
+<form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data">
+<div class="form-group">
+<label for="name">NAME</label>
+<input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required />
+</div>
+<div class="form-group">
+<label for="email">EMAIL</label>
+<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required />
+</div>
+<input id="uploadImage" type="file" accept="image/*" name="image" />
+<input class="btn btn-success" type="submit" value="Upload">
+</form>
+<div id="err"></div>
+<hr>
+<p><a href="https://www.cloudways.com" target="_blank">www.Cloudways.com</a></p>
+</div>
+</div>
+</div></body></html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#submit").click(function(){
+alert("Hello");
+	 $.ajax({
+				method: "POST",
+				data: formdata,
+				url: "http://localhost:3000/tfbc/upload", 
+				success: function(result){
+				console.log(result); 				
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+})
+});
+</script>

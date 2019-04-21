@@ -1,0 +1,80 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#AddOrg").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { shipmentID: $("#shipmentID").val(),
+				lcID: $("#lcId").val(), 
+				description: $("#description").val(),
+				shipmentValue: $("#shipmentValue").val(),
+				shipmentCo: $("#shipmentCo").val(),
+				poland: $("#poland").val(),
+				poentry: $("#poentry").val(),
+				shipmentStatus: $("#shipmentStatus").val()
+				},
+				url: "http://localhost:3000/tfbc/exporter", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.message); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+   
+    <table>
+  <tr>
+    <td>Letter of Credit ID:</td>
+    <td><input id="lcId" type="text"></td>
+  </tr>
+    <tr>
+    <td>Shipment ID:</td>
+    <td><input id="shipmentID" type="text"></td>
+  </tr>
+    <tr>
+    <td>Description:</td>
+    <td><input id="description" type="text"></td>
+  </tr>
+    <tr>
+    <td>Shipment Value:</td>
+    <td><input id="shipmentValue" type="text"></td>
+  </tr>
+    <tr>
+    <td>Shipment Company:</td>
+    <td><input id="shipmentCo" type="text"></td>
+  </tr>
+    <tr>
+    <td>Port of Exporter:</td>
+    <td><input id="poland" type="text"></td>
+  </tr>
+    <tr>
+    <td>Port of Importer:</td>
+    <td><input id="poentry" type="text"></td>
+  </tr>
+  </tr>
+    <tr>
+    <td>Shipment Status:</td>
+    <td><input id="shipmentStatus" type="text"></td>
+  </tr>  
+    <tr>
+    <td></td>
+    <td><button id="AddOrg">Add Shipment</button></td>
+  </tr>
+</table>
+  <div id="div1"></div>
+</body>
+</html>

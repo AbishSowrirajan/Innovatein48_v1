@@ -1,0 +1,56 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#GetLC").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { lcId: $("#lcId").val() },
+				url: "http://localhost:3000/tfbc/getLCHistory", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.data); 
+				var outputHtml = '<table border="1">  <tr> <th>Timestamp of Transaction</th>   <th>Letter of Credit ID</th>    <th>Buyer</th>    <th>Importer Bank</th>    <th>Seller</th>    <th>Exporter bank</th>    <th>Expiry Date</th>    <th>Amount</th>    <th>Status</th>	  </tr>';
+				$.each(result.data, function(i, item) {
+				console.log(item.Value); 				
+				outputHtml = outputHtml + '<tr><td>'+item.Timestamp+ '</td><td>'+item.Value.lcId+'</td><td>'+item.Value.buyer+ '</td><td>'+item.Value.imbank+ '</td><td>' + item.Value.seller + '</td><td>' + item.Value.ExBank + '</td><td>' + item.Value.expiryDate + '</td><td>' + item.Value.amount + '</td><td>' + item.Value.status + '</td></tr>';
+				});
+				outputHtml=outputHtml+'</table>';
+				$("#GetLCHistRecords").html(outputHtml);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+
+<table>
+  <tr>
+    <td>Letter of Credit ID</td>
+    <td><input id="lcId" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="GetLC">Get LC History</button></td>
+  </tr>
+</table>
+
+  
+  <br>
+<div id="GetLCHistRecords">
+  </div>
+  
+
+</body>
+</html>

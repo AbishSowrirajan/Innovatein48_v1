@@ -1,0 +1,47 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#IssueLC").click(function(){
+	 $.ajax({
+				method: "POST",
+				data: { lcId: $("#lcId").val() },
+				url: "http://localhost:3000/tfbc/issueLC", 
+				success: function(result){
+				console.log(result); 
+				console.log(result.data); 
+				$("#div1").html(result.message);
+				},
+				error: function () {
+                alert("Something went wrong. Please check logs");
+            }
+	});
+  });
+});
+</script>
+<style>
+body {
+  background-image: url("TFBgImage.jpg");
+}
+</style>
+</head>
+<body>
+
+<table>
+  <tr>
+    <td>Letter of Credit ID</td>
+    <td><input id="lcId" type="text"></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td><button id="IssueLC">Issue Letter of Credit</button></td>
+  </tr>
+ </table> 
+
+  <br>
+  <div id="div1"></div>
+  
+
+</body>
+</html>
